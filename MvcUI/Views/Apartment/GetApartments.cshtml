@@ -1,0 +1,34 @@
+﻿@model List<ApartmentListDTO>
+
+@{
+    ViewData["Title"] = "GetApartments";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <a class="btn btn-primary mb-3" href="/Apartment/Create">Add New Apartment</a>
+    <div class="row">
+        @foreach (var apartment in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <h4 class="card-title text-danger m-3">Blok = @apartment.Blok - Type = @apartment.Type</h4>
+                    <div class="card-body">
+                        <p class="card-text">Floor Number =  @apartment.FloorNumber</p>
+                        <p class="card-text">Apartment No = @apartment.ApartmentNo</p>
+                        <p class="card-text">Is Empty? = @apartment.IsEmpty</p>
+                        @if (apartment.User!=null)
+                        {
+                            <p class="card-text">User = @apartment.User</p>
+                        }
+                    </div>
+                    <div class="card-footer p-2">
+                    <a class="btn btn-warning" href="/Apartment/Edit/@apartment.Id">Update</a>
+                    <a class="btn btn-danger" href="/Apartment/Delete/@apartment.Id">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

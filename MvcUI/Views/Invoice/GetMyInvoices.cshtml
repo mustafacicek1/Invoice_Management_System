@@ -1,0 +1,28 @@
+﻿@model List<InvoceListDTO>
+
+@{
+    ViewData["Title"] = "GetMyInvoices";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var invoce in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <h4 class="card-title text-danger m-3">@invoce.User</h4>
+                    <div class="card-body">
+                        <p class="card-text">Dues Price = @invoce.DuesPrice</p>
+                        <p class="card-text">Invoice Price = @invoce.InvoicePrice</p>
+                        <p class="card-text">Invoice Month = @invoce.Month</p>
+                    </div>
+                    <div class="card-footer p-2">
+                        <a class="btn btn-warning" href="/Payment/Pay/@invoce.Id">Pay</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

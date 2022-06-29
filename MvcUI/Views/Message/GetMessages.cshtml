@@ -1,0 +1,26 @@
+﻿@model List<MessageListDTO>
+
+@{
+    ViewData["Title"] = "GetMessageList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var message in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <h4 class="card-title text-danger m-3">@message.Title</h4>
+                    <div class="card-body">
+                        <p class="card-text">@message.Description</p>
+                    </div>
+                    <div class="card-footer text-muted p-2">
+                        Sender = @message.User
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

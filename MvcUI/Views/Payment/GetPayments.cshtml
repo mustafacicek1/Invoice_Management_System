@@ -1,0 +1,27 @@
+﻿@model List<PaymentListDTO>
+
+@{
+    ViewData["Title"] = "GetPayments";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var payment in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <h4 class="card-title text-danger m-3">@payment.User</h4>
+                    <div class="card-body">
+                        <p class="card-text">Invoice Month = @payment.InvoiceMonth</p>
+                        <p class="card-text">Total Price = @payment.TotalPrice</p>
+                    </div>
+                    <div class="card-footer text-muted p-2">
+                        Payment Date = @payment.PaymentDate
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

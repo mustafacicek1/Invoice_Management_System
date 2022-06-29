@@ -1,0 +1,46 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-3 text-center">Login Form</h1>
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                <div class="border border-2 border-dark p-3">
+                    <form method="post">
+                        <div class="text-danger" asp-validation-summary="All"></div>
+                        <div class="mb-3">
+                            <label for="IdentificationNumber" class="form-label">T.C. No</label>
+                            <input type="text" name="IdentificationNumber" class="form-control" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password" class="form-label">Password</label>
+                            <input type="password" name="Password" class="form-control" />
+                        </div>
+                        <div class="d-flex justify-content-center mb-3">
+                            <button type="submit" class="btn btn-success">Login</button>
+                        </div>
+                    </form>
+                    @if (ViewBag.message != null)
+                    {
+                        <div class="alert alert-danger mt-5">
+                            @ViewBag.message
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

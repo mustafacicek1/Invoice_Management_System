@@ -1,0 +1,68 @@
+﻿@model UpdateApartmentDTO
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="mb-3 text-center">Update Apartment</h1>
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <div class="border border-2 border-dark p-3">
+            <form method="post">
+                <div class="text-danger" asp-validation-summary="All"></div>
+                <div class="mb-3">
+                    <label for="Block" class="form-label">Blok</label>
+                    <input type="text" asp-for="Blok" name="Blok" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="FloorNumber" class="form-label">Floor Number</label>
+                    <input type="number" asp-for="FloorNumber" name="FloorNumber" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="ApartmentNo" class="form-label">Apartment No</label>
+                    <input type="number" asp-for="ApartmentNo" name="ApartmentNo" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label for="Type" class="form-label">Type</label>
+                    <input type="text" asp-for="Type" name="Type" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" id="isEmpty" name="IsEmpty" type="checkbox" value="@Model.IsEmpty">
+                        <label class="form-check-label" for="IsEmpty">
+                            Is Empty?
+                        </label>
+                    </div>
+                </div>
+                <div id="userId" class="mb-3">
+                    <label for="UserId" class="form-label">User ID</label>
+                    <input type="number" asp-for="UserId" id="userIdInput" name="UserId" class="form-control" />
+                </div>
+                <div class="d-flex justify-content-center mb-3">
+                    <button type="submit" class="btn btn-success">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $("#isEmpty").change(function() {
+            if ($(this).val()=="true") {
+                $(this).val(false);
+                $("#userId").show("slow");
+            }
+            else
+            {
+                $(this).val(true);
+                $("#userId").hide("slow");
+            }
+            $("#userIdInput").val(null);
+        });
+    });
+</script>
+

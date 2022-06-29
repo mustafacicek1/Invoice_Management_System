@@ -1,0 +1,34 @@
+﻿@model List<UserListDTO>
+
+@{
+    ViewData["Title"] = "GetUsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <a class="btn btn-primary mb-3" href="/User/Create">Add New User</a>
+    <div class="row">
+        @foreach (var user in Model)
+        {
+            <div class="col-md-3">
+                <div class="card">
+                    <h4 class="card-title text-danger m-3">@user.Name</h4>
+                    <div class="card-body">
+                        <p class="card-text">T.C. No =  @user.IdentificationNumber</p>
+                        <p class="card-text">Email =  @user.Email</p>
+                        <p class="card-text">Phone =  @user.Phone</p>
+                        @if (user.CarNumberPlate!=null)
+                        {
+                           <p class="card-text">Car Number Plate =  @user.CarNumberPlate</p> 
+                        }
+                    </div>
+                    <div class="card-footer p-2">
+                    <a class="btn btn-warning" href="/User/Edit/@user.Id">Update</a>
+                    <a class="btn btn-danger" href="/User/Delete/@user.Id">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
