@@ -12,14 +12,17 @@
         {
             <div class="col-md-3">
                 <div class="card">
-                    <h4 class="card-title text-danger m-3">Blok = @apartment.Blok - Type = @apartment.Type</h4>
+                    <h4 class="card-title text-danger m-3">Blok - @apartment.Blok</h4>
                     <div class="card-body">
                         <p class="card-text">Floor Number =  @apartment.FloorNumber</p>
                         <p class="card-text">Apartment No = @apartment.ApartmentNo</p>
-                        <p class="card-text">Is Empty? = @apartment.IsEmpty</p>
+                        <p class="card-text">Type = @apartment.Type</p>
                         @if (apartment.User!=null)
                         {
                             <p class="card-text">User = @apartment.User</p>
+                        }else
+                        {
+                           <p class="card-text">This apartment is empty</p>     
                         }
                     </div>
                     <div class="card-footer p-2">

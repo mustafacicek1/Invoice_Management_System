@@ -22,14 +22,18 @@ namespace MvcUI.Controllers
             return View(debts);
         }
 
-        [Authorize(Roles ="User,Admin")]
+        [Authorize(Roles ="User")]
         [HttpGet]
-        public IActionResult GetMyInvoices()
+        public IActionResult UserInvoices()
         {
-            string? id = HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            int userId = int.Parse(id);
-            var invoices = _invoiceService.GetInvocesByUserId(userId);
-            return View(invoices);
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult AdminInvoices()
+        {
+            return View();
         }
 
         [Authorize(Roles = "Admin")]

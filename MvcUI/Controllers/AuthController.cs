@@ -40,7 +40,7 @@ namespace MvcUI.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
                 if (result.UserRole == "Admin")
                 {
-                    return RedirectToAction("GetMessages", "Message");
+                    return RedirectToAction("GetApartments", "Apartment");
                 }
                 return RedirectToAction("GetMyInvoices", "Invoice");
             }

@@ -28,16 +28,16 @@ namespace MvcUI.Controllers
         }
 
         [Authorize(Roles = "Admin,User")]
-        public async Task<IActionResult> Pay(int id)
+        public async Task<JsonResult> Pay(int id)
         {
             var invoice = _invoiceService.GetInvoice(id);
             var paymentInfo = await _creditCardService.Pay(invoice);
             if (paymentInfo !=null)
             {
                 _paymentService.AddPayment(paymentInfo);
-                return RedirectToAction("GetMyInvoices", "Invoice");
+                return Json("Payment successful");
             }
-            return RedirectToAction("GetMyInvoices", "Invoice");
+            return Json("Payment denied");
         }
     }
 }
